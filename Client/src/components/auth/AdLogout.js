@@ -3,20 +3,21 @@ import React, { useContext } from 'react'
 import { useNavigate } from 'react-router'
 import AuthContext from '../../context/AuthContext'
 
-function LogoOutBtn () {
+function AdLogoOutBtn () {
 
 const navigate = useNavigate()
 
-const {getLoggedIn}=useContext(AuthContext)
+const {getAdLoggedIn}=useContext(AuthContext)
 
 
  async function logOut(){
 
 console.log('called');
 
-await axios.get("http://localhost:5000/auth/logout")
+await axios.get("http://localhost:5000/admin/adlogout")
 
-await getLoggedIn();
+await getAdLoggedIn();
+navigate('/admin/adlogin')
 
 
      
@@ -32,4 +33,4 @@ await getLoggedIn();
     )
 }
 
-export default LogoOutBtn   
+export default AdLogoOutBtn   

@@ -2,16 +2,14 @@ import axios from 'axios';
 import React, { useContext, useState } from 'react'
 import AuthContext from '../../context/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Form, Button, Row, Col, Container, Card } from "react-bootstrap";
-import NavBar from '../layout/Navbar';
-import {  useNavigate } from 'react-router';
-function Register() {
-    const navigate = useNavigate()
+import { Form, Button, Row, Col, Container, Card, CardGroup, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+function AdRegister() {
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [passwordverify, setPasswordVerify] = useState("");
     const { getLoggedIn } = useContext(AuthContext)
-    const [error, setError] = useState("");
+
     async function register(e) {
 
         e.preventDefault()
@@ -25,12 +23,10 @@ function Register() {
 
             }
 
-            await axios.post('http://localhost:5000/auth/', registerData)
-           await getLoggedIn()
-            navigate('auth/home')
+            await axios.post('http://localhost:5000/admin/adreg', registerData)
+            getLoggedIn()
         } catch (err) {
             console.log(err);
-            setError(err.response.data.errorMessage)
         }
 
 
@@ -41,24 +37,23 @@ function Register() {
         <div>
 
           
-<NavBar/>
 
-            <Container  style={{ height: "100vw",  }} >
 
-                <Row  style={{ justifyContent: "center", alignItems:"center",height:"100vh"  }}  >
+            <Container>
 
+                <Row  style={{alignItems:"center" ,justifyContent:"center", marginLeft:"6rem", marginTop:"8rem"  }}  >
                     <Col   lg={6}  >
-                
-                        <Card style={{padding:"50px", boxShadow: "0px 0px 8px #9E9E9E"  }}>
-                        <h1 style={{ marginLeft:"7rem" }}  >Signup</h1>
+
+
+                        <Card style={{ width: '25rem',padding:"20px", boxShadow: "0px 0px 8px #9E9E9E"  }}>
+                        <h1 style={{ marginLeft:"5rem" }}  >Admin Signup</h1>
                             <Form onSubmit={register} >
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control required type="email" placeholder="Enter email"  onChange={(e)=>{setEmail(e.target.value) }} value={email}  />
                                     <Form.Text className="text-muted">
-                                        We 'll never share your email with anyone else.
-                                        <p style={{color:"red"}} > {error} </p>
-</Form.Text>    
+                                        We'll never share your email with anyone else.
+</Form.Text>
                                 </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="formBasicPassword"  >
@@ -88,4 +83,4 @@ function Register() {
     )
 }
 
-export default Register
+export default AdRegister
