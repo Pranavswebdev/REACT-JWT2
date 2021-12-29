@@ -20,8 +20,6 @@ await getAdLoggedIn();
 navigate('/admin/adlogin')
 
 
-     
-
 }
 
     return (

@@ -8,7 +8,9 @@ import {  useNavigate } from 'react-router';
 function Register() {
     const navigate = useNavigate()
     const [email, setEmail] = useState("");
+    const [name, setname] = useState("");
     const [password, setPassword] = useState("");
+    const [blockStatus, setblockStatus ] = useState("");
     const [passwordverify, setPasswordVerify] = useState("");
     const { getLoggedIn } = useContext(AuthContext)
     const [error, setError] = useState("");
@@ -21,7 +23,9 @@ function Register() {
 
                 email,
                 password,
-                passwordverify
+                passwordverify,
+                blockStatus:"NotBlocked"
+
 
             }
 
@@ -33,13 +37,10 @@ function Register() {
             setError(err.response.data.errorMessage)
         }
 
-
-
     }
 
     return (
         <div>
-
           
 <NavBar/>
 
@@ -53,12 +54,15 @@ function Register() {
                         <h1 style={{ marginLeft:"7rem" }}  >Signup</h1>
                             <Form onSubmit={register} >
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>Email address</Form.Label>
-                                    <Form.Control required type="email" placeholder="Enter email"  onChange={(e)=>{setEmail(e.target.value) }} value={email}  />
+                                    <Form.Label>User Name</Form.Label>
+                                    <Form.Control required type="text" placeholder="Enter Username"  onChange={(e)=>{setEmail(e.target.value) }} value={email}  />
                                     <Form.Text className="text-muted">
                                         We 'll never share your email with anyone else.
                                         <p style={{color:"red"}} > {error} </p>
 </Form.Text>    
+
+<Form.Label>Email address</Form.Label>
+                                    <Form.Control required type="email" placeholder="Enter email"  onChange={(e)=>{setEmail(e.target.value) }} value={email}  />
                                 </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="formBasicPassword"  >
@@ -68,6 +72,7 @@ function Register() {
                                 <Form.Group className="mb-3" controlId="formBasicPassword"  >
                                     <Form.Label>Password Verify</Form.Label>
                                     <Form.Control required type="password" placeholder="Password"  onChange={(e)=>{setPasswordVerify(e.target.value) }}  value={passwordverify}  />
+                                    
                                 </Form.Group>
                              
                                 <Button variant="primary" type="submit">

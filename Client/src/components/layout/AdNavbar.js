@@ -4,7 +4,7 @@ import {
 } from "react-router-dom";
 import AuthContext from '../../context/AuthContext';
 import LogoOutBtn from '../auth/Logout';
-import { Container,Nav,NavLink,Navbar,NavbarBrand, Collapse,FormText} from "react-bootstrap";
+import { Container,Nav,Navbar,NavbarBrand,Form,FormControl,Button} from "react-bootstrap";
 import AdLogoOutBtn from '../auth/AdLogout';
 function AdNavBar() {
 
@@ -31,6 +31,7 @@ function AdNavBar() {
      
       </div>
     </Navbar.Collapse>
+  
     </Nav>
 
     {AdloggedIn?    <AdLogoOutBtn  className="justify-content-end"/> : " "}
