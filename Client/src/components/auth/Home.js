@@ -3,12 +3,12 @@ import NavBar from '../layout/Navbar';
 
 function Home() {
     return (
-        <div>
+        <div className="uHome" >
             
 
 
     <NavBar/>   
-
+    
 
 
 

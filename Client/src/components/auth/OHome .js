@@ -3,17 +3,14 @@ import NavBar from '../layout/Navbar';
 
 function OHome() {
     return (
-        <div>
+        
+        
+    <div className="uHome"  >
             
+    <NavBar/>
 
+    </div>
 
-    <NavBar/>   
-
-
-
-
-
-        </div>
     )
 }
 

@@ -5,6 +5,7 @@ import AuthContext from '../../context/AuthContext';
 import { Form, Button, Row, Col, Container, Card, CardGroup, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import NavBar from '../layout/Navbar';
 import { useNavigate } from 'react-router';
+import { Opacity } from '@material-ui/icons';
 
 function Login() {
 
@@ -45,14 +46,14 @@ function Login() {
     }
 
     return (
-        <div>
+        <div  className="loginbg" >
 
 
 <NavBar />
 
 
 
-            <Container style={{ height: "100vw",  }}>
+            <Container style={{ height: "100vh",  }}>
 
    
 
@@ -62,15 +63,16 @@ function Login() {
                     <Col lg={6}  >
                  
 
-                        <Card style={{  padding: "50px", boxShadow: "0px 0px 8px #9E9E9E" }}>
+                        <Card className="logCard"  style={{  padding: "50px", boxShadow: "0px 0px 8px #9E9E9E" ,opacity:"0.9"   }}>
                           
-                            <Form onSubmit={login} >   <h1  style={{ marginLeft:"7rem" }}  >Login</h1>
+                            <Form  onSubmit={login} >   <h1  style={{ marginLeft:"7rem", }}  >Login</h1>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control required type="email" placeholder="Enter email" onChange={(e) => { setEmail(e.target.value) }} value={email} />
-                                    <Form.Text className="text-muted">
-                                        We'll never share your email with anyone else.
-</Form.Text>                            <p style={{color:"red"}} > {error} </p>
+                                   
+                                        
+                                        <p>We'll never share your email with anyone else.</p>
+                          <p style={{color:"red"}} > {error} </p>
                                 </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="formBasicPassword"  >

@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from "react";
 import AdNavBar from "../layout/AdNavbar";
 import axios from "axios";
-import { Table, Container, Row, Col, Modal,Form,FormControl,Button } from "react-bootstrap";
+import Swal from "sweetalert2"
+import {
+    Table,
+    Container,
+    Row,
+    Col,
+    Modal,
+    Form,
+    FormControl,
+    Button,
+} from "react-bootstrap";
 import MButton from "@mui/material/Button/";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import BlockIcon from "@material-ui/icons/Block";
-import { render } from "@testing-library/react"
-
-
-
-
+import { render } from "@testing-library/react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AdHome() {
     const [show, setShow] = useState(false);
@@ -18,10 +26,36 @@ function AdHome() {
     const handleShow = () => setShow(true);
     const [users, setUsers] = useState([]);
     const [placeHoldervalue, setPlaceHolder] = useState("");
+    const [nameplaceHoldervalue, setnamePlaceHolder] = useState("");
     const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [editedname, setEditName] = useState("");
+    const [editedemail, setEditEmail] = useState("");
+
     const [editeduser, setediteduser] = useState("");
-    const [searchData,  setSearchData] = useState("");
-   
+    const [searchData, setSearchData] = useState("");
+
+
+    const blocknotify = () => toast.success(" Blocked", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+
+    const editnotify = () => toast.success("Edit Successfull", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+
 
 
     useEffect(() => {
@@ -33,10 +67,40 @@ function AdHome() {
             id,
         };
         try {
-            const response = await axios.post(
-                "http://localhost:5000/admin/deleteuser",
-                userId
-            );
+
+
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then( async (result) => {
+                if (result.isConfirmed) {
+
+
+                    const response = await axios.post(
+                        "http://localhost:5000/admin/deleteuser",
+                        userId
+                    );
+                    getuser();
+
+                  Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                  )
+                }
+              })
+
+
+
+
+
+       
 
             console.log(id);
 
@@ -55,6 +119,7 @@ function AdHome() {
 
             console.log(id);
 
+            blocknotify();
             getuser();
         } catch (err) {
             console.log(err.response.data.errorMessage);
@@ -88,95 +153,134 @@ function AdHome() {
         }
     }
 
+    async function search(e) {
+        e.preventDefault();
 
+        console.log(" search data in client side", searchData);
 
- 
+        const SearchData = {
+            searchData,
+        };
 
+        const response = await axios.post(
+            "http://localhost:5000/admin/search",
+            SearchData
+        );
 
-    async  function   search(e){
-
-        e.preventDefault()
-     
-      console.log(" search data in client side",searchData);
-
-      const SearchData = {
-
-        searchData
-
-      }
-
-      const response= await axios.post("http://localhost:5000/admin/search",SearchData);
-
-      setUsers(response.data);
-   
-   
-       }
-
-
-
-
-   async  function editUser(item){
-
-     setPlaceHolder(item.email)
-     setediteduser(item._id)     
-     handleShow()
-
-
+        setUsers(response.data);
     }
 
-    async  function changeEmail( ){
+    async function editUser(item) {
 
-      
+        setnamePlaceHolder(item.name);
+        setPlaceHolder(item.email);
+        setediteduser(item._id);
+        handleShow();
+    }
 
+    async function changeEmail() {
         try {
-           
-        console.log(email);
-
-          await axios.post("http://localhost:5000/admin/changemail",{email,editeduser});
 
 
 
+            console.log(" editedemail, editedname,placeHoldervalue,nameplaceHoldervalue", editedemail, editedname,placeHoldervalue,nameplaceHoldervalue);
+
+            if (editedemail==='') {
+
+            console.log("email is empty",editedemail);
+
+             setEditEmail(placeHoldervalue)
+             console.log(editedemail);
+
+            }else if(editedname === ''){
+
+                console.log("name is empty", editedname);
+                console.log(typeof nameplaceHoldervalue, "type")
+                 setEditName(nameplaceHoldervalue)
+                 console.log(editedname);
+
+            }
+
+            console.log('Current values of', editedemail,
+            editedname);
+
+
+            await axios.post("http://localhost:5000/admin/changemail", {
+                editedemail,
+                editedname,
+                editeduser,
+            });
+
+            editnotify()
             getuser();
-          
+            setEditName('')
+            setEditEmail('')
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
-
-
-   
-       }
-
-
-
-
+    }
 
     return (
-        <div>
+        <div className="adHome" >
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+
+            {}
+            <ToastContainer />
+
+           
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Edit user</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    
-                
-                <fieldset>
-                        
-                    <legend  type="text"> Email</legend>
-                   <input type="email"    onChange={(e) => { setEmail(e.target.value) }}  placeholder={placeHoldervalue}  />
-                   
 
-                </fieldset>
+                    <fieldset>
+
+                        <label style={{ padding: "2px" }} htmlFor="email">Email</label>
+                        <input
+
+                            style={{ border: "0px", borderRadius: "5px", boxShadow: "0px 0px 4px #9E9E9E" }}
+
+                            type="email"
+                            onChange={(e) => {
+                                console.log(typeof e.target.value, "onchange")
+                                setEditEmail(e.target.value);
+                            }}
+                            placeholder={placeHoldervalue}
+                        />
+                        <label style={{ padding: "5px" }} htmlFor="name">Name</label>
+                        <input
+                            style={{ border: "0px", borderRadius: "5px", boxShadow: "0px 0px 4px #9E9E9E" }}
+                            required
+                            type="name"
+                            onChange={(e) => {
+                                setEditName(e.target.value);
+                            }}
+                            placeholder={nameplaceHoldervalue}
+                        />
 
 
+
+                    </fieldset>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
-            </Button>
-                    <Button  variant="primary" onClick={handleClose , changeEmail }>
+          </Button>
+                    <Button variant="primary" onClick={(handleClose, changeEmail)}>
                         Save Changes
-            </Button>
+          </Button>
                 </Modal.Footer>
             </Modal>
 
@@ -186,33 +290,30 @@ function AdHome() {
             {
                 <Container style={{}}>
                     <Row
-
                         style={{
                             justifyContent: "center",
                             alignItems: "center",
                             height: "100vh",
                         }}
-                    >   
-                    
-
+                    >
                         <Col lg={12}>
-                            
-                            <br />
-                            <br />
                             <Col lg={4}>
-                            <Form onSubmit={search} className="d-flex ">
-        <FormControl
-        onChange={(e) => { setSearchData(e.target.value) }} 
-          type="search"
-          placeholder="Search"
-          className="me-2"
-          aria-label="Search"
-        />
-        <Button type="submit" variant="outline-success">Search</Button>
-      </Form>
-
+                                <Form onSubmit={search} className="d-flex ">
+                                    <FormControl
+                                        onChange={(e) => {
+                                            setSearchData(e.target.value);
+                                        }}
+                                        type="search"
+                                        placeholder="Search"
+                                        className="me-2"
+                                        aria-label="Search"
+                                    />
+                                    <Button type="submit" variant="outline-success">
+                                        Search
+                  </Button>
+                                </Form>
                             </Col>
-              
+
                             <br />
                             <Table
                                 borderless
@@ -222,9 +323,7 @@ function AdHome() {
                                 variant="dark"
                                 size="sm"
                             >
-      
                                 <thead>
-                                    
                                     <tr>
                                         <th>#</th>
                                         <th>Username</th>
@@ -239,15 +338,12 @@ function AdHome() {
                                         return (
                                             <tr>
                                                 <td>{index + 1}</td>
-                                                <td>@mdo</td>
+                                                <td>{item.name}</td>
                                                 <th>{item.email}</th>
                                                 <th>
                                                     <MButton
-                                                        onClick={()=>{
-                                                           editUser(item)
-
-                                                              
-
+                                                        onClick={() => {
+                                                            editUser(item);
                                                         }}
                                                         variant="outlined"
                                                         size="large"
