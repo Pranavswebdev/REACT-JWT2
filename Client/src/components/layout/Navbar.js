@@ -19,17 +19,17 @@ function NavBar() {
     
 
 
-<>
+<div  >
 
 
-<Navbar bg="dark" variant="dark">
+<Navbar className="navBar"  bg="dark" variant="dark">
     <Container>
 
 
     <Navbar.Brand href="#home">   Welcome</Navbar.Brand>
-    <Nav className="me-auto">
+    <Nav  className="me-auto navBar">
   
-      {loggedIn?      <Nav.Link  href="/">Home</Nav.Link> :  <Nav.Link href="/auth/register">Register</Nav.Link>}
+      {loggedIn?      <Nav.Link  href="auth/home">Home</Nav.Link> :  <Nav.Link href="/auth/register">Register</Nav.Link>}
       {loggedIn?   <Nav.Link href="auth/customers">Cart</Nav.Link>  :   <Nav.Link href="/auth/login">Login</Nav.Link>}
    
     
@@ -47,7 +47,7 @@ function NavBar() {
 
 
 
-</>
+  </div>
 
 
 

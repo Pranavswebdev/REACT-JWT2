@@ -1,42 +1,104 @@
-.loginbg{
-
-object-fit: cover;
-background-image: url("https://4.bp.blogspot.com/-n-rV-fF2-vA/V0RqmAN4pBI/AAAAAAAAK2M/I6btAd8JoaY_BLpcForZzorg4pOhCQHXwCLcB/s1600/cobblestone-sidewalk-at-night-light-photography-1920x1200-wallpaper136975.jpg");
-
+.loginbg {
+    justify-content: center;
+    background-repeat: "no-repeat";
+  object-fit: cover;
+  background-image: url("https://4.bp.blogspot.com/-n-rV-fF2-vA/V0RqmAN4pBI/AAAAAAAAK2M/I6btAd8JoaY_BLpcForZzorg4pOhCQHXwCLcB/s1600/cobblestone-sidewalk-at-night-light-photography-1920x1200-wallpaper136975.jpg");
 }
-.registerbg{
 
-    object-fit: cover;
-    background-image: url("https://4.bp.blogspot.com/-n-rV-fF2-vA/V0RqmAN4pBI/AAAAAAAAK2M/I6btAd8JoaY_BLpcForZzorg4pOhCQHXwCLcB/s1600/cobblestone-sidewalk-at-night-light-photography-1920x1200-wallpaper136975.jpg");
+.adloginbg {
     
-    }
+    background-size: cover;
+    background-image: url("/public/521111.jpg");
+    background-repeat: no-repeat;
+    
+  }
+  
 
 
+.registerbg {
+  object-fit: cover;
+  background-image: url("https://4.bp.blogspot.com/-n-rV-fF2-vA/V0RqmAN4pBI/AAAAAAAAK2M/I6btAd8JoaY_BLpcForZzorg4pOhCQHXwCLcB/s1600/cobblestone-sidewalk-at-night-light-photography-1920x1200-wallpaper136975.jpg");
+}
 
-    .regCard{
+.regCard {
+  color: aliceblue;
+  background-color: rgba(68 67 67 / 52%);
+}
+
+.adlog{
 
     color: aliceblue;
-      background-color: rgba(68 67 67 / 52%)
-        
-        }
+    background-color: rgba(14 14 14 / 59%);
 
-        .logCard{
+}
 
-            color: aliceblue;
-              background-color: rgba(68 67 67 / 52%);
-              background-image: url("https://4.bp.blogspot.com/-n-rV-fF2-vA/V0RqmAN4pBI/AAAAAAAAK2M/I6btAd8JoaY_BLpcForZzorg4pOhCQHXwCLcB/s1600/cobblestone-sidewalk-at-night-light-photography-1920x1200-wallpaper136975.jpg");
-                
-                }
+.logCard {
+  color: aliceblue;
+  background-color: rgba(68 67 67 / 52%);
+  background-image: url("https://4.bp.blogspot.com/-n-rV-fF2-vA/V0RqmAN4pBI/AAAAAAAAK2M/I6btAd8JoaY_BLpcForZzorg4pOhCQHXwCLcB/s1600/cobblestone-sidewalk-at-night-light-photography-1920x1200-wallpaper136975.jpg");
+}
+
+.uHome {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  background-repeat: "no-repeat";
+  align-items: center; 
+text-align: center;
+  background-size: cover;
+  background-image: url("../public/pexels-oliver-sjöström-931018.jpg");
+  overflow-y: scroll;
+}
 
 
-                .uHome{
-                    height: 100vh;
-                   background-color: blue;
-                    object-fit: cover;
-                
-                      background-image: url("../public/pexels-oliver-sjöström-931018.jpg");
-                        
-                        }
-            
-    
-        
+.adHome{
+    min-height: 100vh;
+    justify-content: center;
+    background-repeat: "no-repeat";
+    align-items: center; 
+  text-align: center;
+    background-size: cover;
+    background-image: url("/public/521136.jpg");
+    overflow-y: scroll;
+
+}
+
+.navBar {
+  color: aliceblue;
+  background-color: rgba(68 67 67 / 52%);
+}
+
+.title {
+    opacity: .8;
+    font-size:4rem;
+   color: white;
+   font-weight: 400;
+}
+
+.colorText {
+    font-weight: 700;
+    font-size: larger;
+    color: aqua;
+    font-family:unset;
+}
+
+.down{
+ 
+    font-size:12rem;
+    font-weight: 500;
+    color: aqua;
+  
+}
+
+
+.container{
+ 
+
+    text-align: center;
+ 
+}
+
+.root{
+
+    height: 100vh;
+}

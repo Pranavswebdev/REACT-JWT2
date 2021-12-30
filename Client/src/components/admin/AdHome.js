@@ -27,11 +27,8 @@ function AdHome() {
     const [users, setUsers] = useState([]);
     const [placeHoldervalue, setPlaceHolder] = useState("");
     const [nameplaceHoldervalue, setnamePlaceHolder] = useState("");
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
     const [editedname, setEditName] = useState("");
     const [editedemail, setEditEmail] = useState("");
-
     const [editeduser, setediteduser] = useState("");
     const [searchData, setSearchData] = useState("");
 
@@ -318,9 +315,9 @@ function AdHome() {
                             <Table
                                 borderless
                                 responsive
-                                striped
+                              
                                 hover
-                                variant="dark"
+                                variant="none"
                                 size="sm"
                             >
                                 <thead>

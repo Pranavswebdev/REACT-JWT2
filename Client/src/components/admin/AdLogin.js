@@ -35,8 +35,8 @@ function AdLogin() {
     }
 
     return (
-        <div>
-            <Container style={{ height: "100vw" }}>
+        <div className="adloginbg" >
+            <Container style={{  }}>
                 <Row
                     style={{
                         justifyContent: "center",
@@ -45,12 +45,12 @@ function AdLogin() {
                     }}
                 >
                     <Col lg={6}>
-                        <Card style={{ padding: "60px", boxShadow: "0px 0px 10px #9E9E9E" }}>
+                        <Card className="adlog"  style={{  padding: "50px", boxShadow: "0px 0px 8px #9E9E9E" ,opacity:"0.9"   }} >
                             <Form onSubmit={login}>
                                 {" "}
-                                <h1 style={{ marginLeft: "7rem" }}>Login</h1>
+                                <h1 style={{ marginLeft: "-2rem" }}>Login</h1>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>Email address</Form.Label>
+                                    
                                     <Form.Control
                                         required
                                         type="email"
@@ -66,7 +66,7 @@ function AdLogin() {
                                     <p style={{ color: "red" }}> {error} </p>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <Form.Label>Password</Form.Label>
+                                   
                                     <Form.Control
                                         required
                                         type="password"

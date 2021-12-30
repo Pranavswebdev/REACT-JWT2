@@ -3,14 +3,16 @@ import React from 'react'
 import axios from 'axios'
 import { AuthContextProvider } from './context/AuthContext';
 import './bg.css'
+import placeTovisit from './components/placeTovisit';
 axios.defaults.withCredentials=true
 function App() {
   return (
-    <div >
+    <div className="root"  >
       <AuthContextProvider>
 
         <Router />
-
+    
+    
       </AuthContextProvider>
 
 

@@ -10,8 +10,7 @@ function Home() {
     <NavBar/>   
     
 
-
-
+  
 
         </div>
     )
