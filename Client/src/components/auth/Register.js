@@ -54,9 +54,9 @@ function Register() {
                             <h1 style={{ marginLeft: "7rem" }}  >Signup</h1>
                             <Form onSubmit={register} >
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>User Name</Form.Label>
+                                    
                                     <Form.Control required type="text" placeholder="Enter Username" onChange={(e) => {setName(e.target.value) }} value={name    } />
-                                    <Form.Label>Email address</Form.Label>
+                                    <Form.Label> </Form.Label>
                                     <Form.Control required type="email" placeholder="Enter email" onChange={(e) => { setEmail(e.target.value) }} value={email} />
                                 </Form.Group>
                             
@@ -64,11 +64,11 @@ function Register() {
                                         <p style={{ color: "red" }} > {error} </p>
                                
                                 <Form.Group className="mb-3" controlId="formBasicPassword"  >
-                                    <Form.Label>Password</Form.Label>
+                          
                                     <Form.Control required type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} value={password} />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="formBasicPassword"  >
-                                    <Form.Label>Password Verify</Form.Label>
+                                
                                     <Form.Control required type="password" placeholder="Password" onChange={(e) => { setPasswordVerify(e.target.value) }} value={passwordverify} />
 
                                 </Form.Group>

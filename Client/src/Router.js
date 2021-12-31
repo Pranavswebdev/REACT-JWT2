@@ -35,8 +35,8 @@ function Router() {
 
                 <Route path="auth/register" element={loggedIn ? <Navigate to="/auth/home" /> : <Register />} />
                 <Route path="auth/login" element={loggedIn ? <Navigate to="/auth/home" /> : <Login />} />
-                <Route path="auth/home" element={<OHome />} />
-                <Route path="auth/logout" element={<OHome />} />
+                <Route path="auth/home" element={loggedIn ? <OHome /> : <Register />} />
+                <Route path="auth/logout" element={ <Login />} />
                 <Route path="auth/ohome" element={<OHome />} />
 
 
@@ -45,7 +45,7 @@ function Router() {
                 <Route path="admin/adlogin" element={AdloggedIn?<Navigate to="/admin" />:<AdLogin />} />
                 <Route path="/admin" element={AdloggedIn?<AdHome />:<Navigate to="/admin/adlogin" /> } />
                 <Route path="admin/adreg" element={<AdRegister />} />
-                <Route path="admin/adlogout" element={<AdLogoOutBtn />} />
+                <Route path="admin/adlogout" element={<AdLogin />} />
 
             </Routes>
 

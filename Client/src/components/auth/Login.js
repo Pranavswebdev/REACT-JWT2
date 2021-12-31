@@ -65,9 +65,9 @@ function Login() {
 
                         <Card className="logCard"  style={{  padding: "50px", boxShadow: "0px 0px 8px #9E9E9E" ,opacity:"0.9"   }}>
                           
-                            <Form  onSubmit={login} >   <h1  style={{ marginLeft:"7rem", }}  >Login</h1>
+                            <Form  onSubmit={login} >   <h1  style={{ marginLeft:"0rem", }}  >Login</h1>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Label>Email address</Form.Label>
+                                  
                                     <Form.Control required type="email" placeholder="Enter email" onChange={(e) => { setEmail(e.target.value) }} value={email} />
                                    
                                         
@@ -76,7 +76,7 @@ function Login() {
                                 </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="formBasicPassword"  >
-                                    <Form.Label>Password</Form.Label>
+                              
                                     <Form.Control required type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value) }} value={password} />
                                 </Form.Group>
 

@@ -75,7 +75,7 @@ function AdHome() {
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, delete it!'
-              }).then( async (result) => {
+            }).then(async (result) => {
                 if (result.isConfirmed) {
 
 
@@ -85,19 +85,19 @@ function AdHome() {
                     );
                     getuser();
 
-                  Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                  )
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
                 }
-              })
+            })
 
 
 
 
 
-       
+
 
             console.log(id);
 
@@ -180,26 +180,26 @@ function AdHome() {
 
 
 
-            console.log(" editedemail, editedname,placeHoldervalue,nameplaceHoldervalue", editedemail, editedname,placeHoldervalue,nameplaceHoldervalue);
+            console.log(" editedemail, editedname,placeHoldervalue,nameplaceHoldervalue", editedemail, editedname, placeHoldervalue, nameplaceHoldervalue);
 
-            if (editedemail==='') {
+            if (editedemail === '') {
 
-            console.log("email is empty",editedemail);
+                console.log("email is empty", editedemail);
 
-             setEditEmail(placeHoldervalue)
-             console.log(editedemail);
+                setEditEmail(placeHoldervalue)
+                console.log(editedemail);
 
-            }else if(editedname === ''){
+            } else if (editedname === '') {
 
                 console.log("name is empty", editedname);
                 console.log(typeof nameplaceHoldervalue, "type")
-                 setEditName(nameplaceHoldervalue)
-                 console.log(editedname);
+                setEditName(nameplaceHoldervalue)
+                console.log(editedname);
 
             }
 
             console.log('Current values of', editedemail,
-            editedname);
+                editedname);
 
 
             await axios.post("http://localhost:5000/admin/changemail", {
@@ -234,7 +234,7 @@ function AdHome() {
             {}
             <ToastContainer />
 
-           
+
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
@@ -287,13 +287,18 @@ function AdHome() {
             {
                 <Container style={{}}>
                     <Row
+
+
                         style={{
                             justifyContent: "center",
                             alignItems: "center",
                             height: "100vh",
                         }}
                     >
-                        <Col lg={12}>
+                        <Col lg={6} style={{
+                            marginLeft: "37rem", maxWidth: "37rem"
+                        }}  > <h1 style={{fontFamily:'monospace'}} > User Details </h1>
+                            <br /><br />
                             <Col lg={4}>
                                 <Form onSubmit={search} className="d-flex ">
                                     <FormControl
@@ -309,13 +314,14 @@ function AdHome() {
                                         Search
                   </Button>
                                 </Form>
+
                             </Col>
 
                             <br />
                             <Table
                                 borderless
                                 responsive
-                              
+                                style={{ fontFamily: ' monospace' }}
                                 hover
                                 variant="none"
                                 size="sm"
@@ -338,7 +344,7 @@ function AdHome() {
                                                 <td>{item.name}</td>
                                                 <th>{item.email}</th>
                                                 <th>
-                                                    <MButton
+                                                    <MButton style={{border:'0px'}}
                                                         onClick={() => {
                                                             editUser(item);
                                                         }}
@@ -352,7 +358,7 @@ function AdHome() {
                                                 <th>
                                                     {" "}
                                                     {item.blockStatus === "Block" ? (
-                                                        <MButton
+                                                        <MButton  style={{border:'0px'}}
                                                             onClick={() => UnblockUser(item._id)}
                                                             variant="outlined"
                                                             color="success"
@@ -361,7 +367,7 @@ function AdHome() {
                               Unblock{" "}
                                                         </MButton>
                                                     ) : (
-                                                        <MButton
+                                                        <MButton  style={{border:'0px'}}
                                                             onClick={() => blockUser(item._id)}
                                                             variant="outlined"
                                                             size="large "
@@ -373,7 +379,7 @@ function AdHome() {
 
                                                 <th>
                                                     {" "}
-                                                    <MButton
+                                                    <MButton     style={{border:'0px'}}
                                                         onClick={() => deleteUser(item._id)}
                                                         variant="outlined"
                                                         size="large"
